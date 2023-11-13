@@ -2,26 +2,80 @@
 @tailwind components;
 @tailwind utilities;
 
+/* font-family */
+@import url('https://fonts.googleapis.com/css2?family=Orbit&display=swap');
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css");
+
+/* reset CSS */
+/* *{margin:0;padding:0;font:inherit;color:inherit;}
+*, :after, :before {box-sizing:border-box;}
+:root {-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%;text-size-adjust:100%;cursor:default;line-height:1.5;overflow-wrap:break-word;word-break:break-word;tab-size:4}
+html, body {height:100%;}
+img, picture, video, canvas, svg {display: block;max-width:100%;}
+button {background:none;border:0;cursor:pointer;}
+a {text-decoration:none}
+table {border-collapse:collapse;border-spacing:0}
+li {list-style: none;} */
+
+/* root */
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --main-color: #ffffff;
+  --sub-color: #F7F7F7;
+  --hr-color: #cfcfcf;
+  --font-main: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard Variable", Pretendard, Roboto, "Noto Sans KR", "Segoe UI", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  --font-large: 1.3rem;
+  --font-medium: 1rem;
+  --font-small: .7rem;
+  --text-normal: rgba(0, 0, 0, .7);
+  --text-sub: 
+  --text-alert: rgba(134, 142, 150, 1);
+  --box-hover: #DBE4FF;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.App {
+  font-family: var(--font-main);
+  font-size: 18px;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+/* 간편 설정값 */
+.Height-large {
+  height: 60px;
+}
+
+.Height-medium {
+  height: 30px;
+}
+
+.Height-small {
+  height: 15px;
+}
+
+.Font-large {
+  font-size: var(--font-large);
+}
+
+.Font-medium {
+  font-size: var(--font-medium);
+}
+
+.Font-small {
+  font-size: var(--font-small);
+}
+
+/* WHITE-SPACE CSS */
+
+
+/* MAIN + SIDEBAR */
+.Content-container {
+  display: flex;
+  width: 100%;
+  min-height: 1500px;
+}
+
+/* MAIN */
+.Main-container {
+  width: 100%;
+  max-width: 1500px;
+  min-height: 1000px;
+  padding: 0px 25px 0;
 }
