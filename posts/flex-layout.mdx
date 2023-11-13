@@ -1,0 +1,204 @@
+---
+tag: CSS
+title: Flex 레이아웃
+date: 2023-10-9
+description: Flex 레이아웃에 대해 알아보자
+thumbnail: /images/post/flex-layout/thumbnail.png
+---
+# Flex란?
+
+Flex는 한 방향 레이아웃 시스템이다.
+
+![0](/images/post/flex-layout/0.png)
+
+# flex 사용법
+
+```html
+<div class="flex-container">
+        <div class="flex-item">1</div>
+        <div class="flex-item">2</div>
+        <div class="flex-item">3</div>
+</div>
+```
+
+```css
+.flex-item {
+    width: 100px; // flex에서는 width가 max-width로 적용된다.
+    height: 100px;
+    background-color: grey;
+    margin: 5px;
+}
+```
+
+위의 박스들을 가로로 배치하기 위해서는 float나 grid를 사용하기 보다는
+
+가로배치를 하고자 하는 박스들을 묶은 부모 태그에 display: flex 속성을 준다.
+
+# flex에서 쓰는 속성
+
+```css
+.flex-container {
+	display: flex;
+	justify-content: center; // 가로정렬
+	align-items: center; // 세로정렬
+	flex-direction: column; // column세로배치 row가로배치
+	flex-wrap: wrap; // width가 커서 밑으로 보내고 싶을 때 사용
+	flex-grow: 2; // 박스크기를 비율로 설정가능 2는 2배 3은 3배다.
+}
+```
+
+### display
+
+flex 컨테이너를 정의해주는 속성으로 주어진 값에 따라 inline 혹은 block이다.
+
+직접적인 모든 자식들이 flex 문맥을 사용 가능하게 해준다.
+
+```css
+.flex-container {
+	display: flex; /*on inline-flex*/
+}
+```
+
+### flex-direction
+
+배치방향을 설정한다. flex item들이 flex container의 방향대로 위치한다.
+
+flexbox는 단방향의 레이아웃 개념이다.
+
+```css
+.flex-container {
+	flex-direction: row | row-reverse | column | column-reverse;
+}
+```
+
+- row: 기본값이다. 왼쪽끝에서부터 배치된다.
+- row-reverse: 오른쪽끝에서부터 배치된다.
+- column: 위에서부터 배치된다.
+- column-reverse: 아래에서부터 배치된다.
+
+### flex-wrap
+
+영역내에서 요소가 벗어났을 때 표현할 방식을 정하는 속성이다.
+
+```css
+.flex-container {
+  flex-wrap: nowrap | wrap | wrap-reverse;
+}
+```
+
+- nowrap: 기본값이다. 화면을 벗어나더라도 요소가 줄바꿈을 하지 않는다.
+- wrap: 화면을 벗어난 요소를 줄바꿈 해준다.
+- wrap-reverse: 화면을 벗어난 요소를 반대 순서로 줄바꿈 해준다.
+
+### justify-content
+
+요소의 가로축 정렬을 정하는 속성이다.
+
+```css
+.flex-container {
+  justify-content: flex-start | flex-end | center | space-between | space-around
+}
+```
+
+- flex-start: 기본값이다. flex 요소들을 가로축 시작부분에 정렬
+- flex-end: flex 요소들을 가로축 끝부분에 정렬
+- center: 요소들을 가로축 가운데에 정렬
+- space-between: 요소들을 가로축 양끝에 붙이고 요소들간 동일한 여백을 두는 정렬
+- space-around: 가로축 양끝에 여백을 만들고 요소들을 여백에 붙인다. 요소들간 동일한 여백을 두는 정렬
+
+### align-items
+
+요소의 세로축 정렬을 정하는 속성이다.
+
+```css
+.flex-container {
+  align-items: stretch | flex-start | flex-end | center
+}
+```
+
+- stretch: 기본값이다. 요소들을 세로축 시작부분에 정렬하지만 flex-start와의 차이점은 화면 끝부분까지 요소를 늘린다.
+- flex-start: 요소들을 세로축 시작부분에 정렬하지만 stretch와의 차이점은 요소의 크기만큼만 있는다.
+- flex-end: 요소들을 세로축 끝부분에 정렬한다.
+- center: 요소들을 세로축 가운데에 정렬한다.
+
+### align-content
+
+flex-wrap이 wrap일때 적용되는 속성으로
+
+요소와 요소의 빈 공간의 배치를 세로축에서 결정하는 속성이다. 
+
+```css
+.flex-container {
+  align-content: flex-start | flex-end | center | space-between | space-around
+}
+```
+
+- flex-start: wrap으로 인해 요소가 줄바꿈을 하여도 stretch하지 않는다. 세로축 시작부분에 정렬한다.
+- flex-end: 세로축 끝부분에 정렬한다.
+- center: 세로축 가운데에 정렬한다.
+- space-between: 세로축 양쪽 끝부분에 정렬하고 가운데에 여백을 동일하게 둔다.
+- space-around: 세로축 양쪽 끝부분에 여백을 만들고 요소들을 여백에 붙인다.
+
+### flex-grow
+
+여백을 요소에게 배정시켜주는데 그 요소크기의 비율을 정해주는 속성이다.
+
+요소가 flex-basis의 값보다 커질 수 있는지를 결정하는 속성이다.
+
+```css
+.flex-item {
+	flex-grow: 0 | 1 | 2 | 3
+}
+```
+
+- 0: 기본값이다. 원래의 크기를 가지며 여백을 유지한다.
+- 1: 여백을 해당요소가 전체의 요소갯수만큼 나누고 그중 1배만큼 가져온다.
+- 2: 여백을 해당요소가 전체를 요소갯수만큼 나누고 그중 2배만큼 가져온다.
+- 3: 여백을 해당요소가 전체를 요소갯수만큼 나누고 그중 3배만큼 가져온다.
+
+### flex-shrink
+
+flex-grow와 쌍을 이루는 속성으로
+
+요소가 flex-basis의 값보다 작아질 수 있는지를 결정하는 속성이다.
+
+```css
+.flex-item {
+	flex-shrink: 1 | 0 
+}
+```
+
+- 1: 기본값이다. 요소가 flex-basis보다 작아질 수 있다.
+- 0: 요소의 크기가 flex-basis보다 작아지지 않아 고정폭의 컬럼을 쉽게 만들 수 있다.
+고정크기는 width로 설정한다.
+- 그외 숫자값: 0보다 큰 값이 적용되면 요소가 flexible 박스로 변하고 flex-basis보다 작아진다.
+
+### flex-basis
+
+요소들의 기본 크기를 정해주는 속성이다.
+
+```css
+.flex-item {
+	flex-basis: auto | 0 | 50% | 300px | 10rem | content
+}
+```
+
+- auto: 기본값이다. 해당 요소의 width값을 사용한다.
+- 0: 기본크기 값이 0이다.
+- content: 컨텐츠의 크기로 width를 설정하지 않은 값이다.
+
+- align-content와 align-items의 차이
+    
+    align-items는 한줄부터 의미가 있지만
+    
+    align-content는 두줄부터 의미가 있다.
+    
+    ![1](/images/post/flex-layout/1.png)
+    
+    align-content
+    
+    ![2](/images/post/flex-layout/2.png)
+    
+    align-items
+    
+    ![3](/images/post/flex-layout/3.png)
