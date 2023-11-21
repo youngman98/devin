@@ -180,3 +180,19 @@
 1. 사이드바 기능구현(퍼블리싱 완료)
    - map 함수 사용해서 post 오브젝트의 tag속성만큼 반복되도록 구현할것
    - state의 상태관리를 통해 tag속성값을 가져올 수 있도록 상태관리 라이브러리 적용방법 찾아보기
+
+## 2023년 11월 21일
+1. 사이드바 기능구현(구현완료)
+   - usePathname hook을 사용해 동적라우팅을 통한 현재 경로의 tag값과 li탭의 tag값이 같을경우 background-color를 변경하도록 했다.
+   - Set함수와 sort함수를 사용해 중복된 tag 값을 제거해 사이드바의 tag가 중복되지 않고 정렬되도록 했다.
+2. tag에 따른 postCard 구현(구현완료)
+   - usePathname hook을 사용해 동적라우팅을 통한 현재 경로의 tag값과 일치하는 tag를 가진 post들을 변수에 담고 filter와 삼항연산자를 사용해 tag별로 postCard를 묶어서 나오게 했다.
+3. tailwindcss 커스텀 color 설정(구현완료)
+4. 디자인 수정(완료)
+5. contentlayer mdx파일을 html로 변환중 remarkGfm 최신버전과 충돌하는 오류발견
+   - https://github.com/contentlayerdev/contentlayer/issues/558 공식문서 issue 참조
+   - remarkGfm의 정확한 용도 파악후 대체 라이브러리를 찾거나 버전다운을 할예정
+6. post페이지 html 스타일링하는 방법 찾아보기
+7. tailwind로 다크모드 구현하는 방법 찾아보기
+8. footer, contact 컴포넌트 만들기
+9. redux-toolkit 설치 및 세팅하기

@@ -9,8 +9,6 @@ export const generateMetadata = ({ params }) => {
   return { title: post.title }
 }
 
-
-
 const PostLayout = ({ params }: { params: { slug: string } }) => {
   const post = allPosts.find((post) => post._raw.flattenedPath === params.slug)
 

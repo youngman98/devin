@@ -1,11 +1,12 @@
-'use client'
 
 import type { Metadata } from 'next'
+import { useAppSelector, useAppDispatch } from 'redux/hooks'
 import './globals.css'
 import Darkmode from './(tool)/darkmode'
 import PostEdit from './(tool)/edit'
 import Header from './(always)/header'
 import Sidebar from './(always)/sidebar'
+import Providers from '../redux/provider'
 
 export default function RootLayout({
   children,
@@ -19,7 +20,7 @@ export default function RootLayout({
           <div className="Main-container">
           <Header/>
           
-          {children}
+          <Providers>{children}</Providers>
           
           </div>
         </div>
