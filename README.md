@@ -196,3 +196,11 @@
 7. tailwind로 다크모드 구현하는 방법 찾아보기
 8. footer, contact 컴포넌트 만들기
 9. redux-toolkit 설치 및 세팅하기
+
+## 2023년 11월 25일
+1. 개인 노션 TIL 프로젝트에 정리해둔 문서들 mdx화 해서 개인 블로그 post화 하기
+2. remarkGfm 버전다운으로 에러 해결
+3. post 페이지 스타일링하기
+4. scrollTo함수로 상단이동 버튼 구현
+5. rehype-pretty-code로 code block 스타일링, 강조 단어 스타일링
+   - 강조 단어는 content에 속하므로 tailwind.config.ts에서 content의 스타일링을 담당하는 typography에 별도로 code 스타일링을 한다.

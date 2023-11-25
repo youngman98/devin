@@ -1,0 +1,137 @@
+---
+tag: CS
+title: 웹의 역사와 SSR, CSR, SSG
+date: 2023-10-29
+description: 웹의 시작과 발전 그리고 현재에 대해 알아보고 SSR, CSR, TTV, TTI, SSG에 대해 알아보자
+thumbnail: /images/post/cs/web-history-SSR-CSR-SSG/thumbnail.png
+---
+
+# 웹의 역사
+
+## Static Sites(~1995년대 중반)
+
+![0](/images/post/cs/web-history-SSR-CSR-SSG/0.png)
+
+1. 사용자가 url을 입력하여 브라우저에서 서버측에 필요한 HTML 페이지를 요청한다.
+2. 서버에서는 이미 등록되어 있는 HTML 파일 중에서 사용자가 요청한 HTML 파일을 보내서 렌더링한다.
+
+## iframe 도입(1996년~)
+
+![1](/images/post/cs/web-history-SSR-CSR-SSG/1.png)
+
+iframe태그로 페이지 내에서 부분적으로 문서를 받아와 업데이트 하는 방식이 가능해졌다.
+
+## XMLHttpRequest(1998년~)
+
+![2](/images/post/cs/web-history-SSR-CSR-SSG/2.png)
+
+HTML 문서 전체가 아닌 JSON 형식으로 서버에서 필요한 데이터만 받아와서 Javascript를 통해 페이지레 렌더링 할 수 있게 됐다.
+
+## AJAX(2005년~)
+
+![2](/images/post/cs/web-history-SSR-CSR-SSG/2.png)
+
+XMLHttpRequest이 AJAX라는 명칭으로 불리기 시작한다.
+
+사용자가 한 페이지에 머무르면서 필요한 데이터를 서버에서 받아와 부분적으로 업데이트하는 방식
+
+SPA의 시초다.
+
+---
+
+# SSR과 CSR
+
+사용자들의 PC 성능이 향상되고 Javascript의 표준화가 잘 이뤄짐에 따라 Angular.js, Vue.js, React.js 등의 프레임워크가 등장하며 CSR이 주류인 시대가 된다.
+
+## CSR이란?
+
+CSR(Client Side Rendering)은 클라이언트 사이드의 비중을 굉장히 높게 가져가는 방식을 의미한다.
+
+![3](/images/post/cs/web-history-SSR-CSR-SSG/3.png)
+
+1. 최초 요청시 서버에서 사용자에게 빈 HTML 파일을 보낸다.
+2. 필요한 자원(Javascript, CSS 등)을 다운로드 한다.
+3. 브라우저에서 리액트를 실행하고 이때 리액트는 빈 HTML 문서를 채워넣을 DOM 요소를 만들어내 채운다.
+4. 위 과정이 모두 끝나면 사용자는 컨텐츠를 볼 수 있으며 상호작용 할 수 있다.
+
+
+## CSR의 문제점
+
+1. 무의미한 화면인 빈화면 또는 로딩화면을 사용자에게 보여준다.
+    
+    bundling된 app.js 파일은 어플리케이션의 로직과 소스코드가 담겨있어 사이즈가 크고 무겁기때문에 렌더링 하는데 지연시간이 발생한다.
+    
+2. SEO(Search Engine Optimization)가 낮다.
+    
+    웹 페이지 검색엔진이 자료를 수집하고 순위를 매기는 방식을 SEO라고 하는데 CSR의 경우 HTML이 비어있으므로 SEO에서 불리하다.
+    
+
+## SSR이란?
+
+SSR(Server Side Rendering) 사용자가 웹사이트에 접속하면 서버에서 필요한 데이터를 모두 가져와서 HTML 파일을 만들고 이러한 HTML 파일을 동적으로 제어할 수 있는 일부 Javascript 소스코드만을 함께 클라이언트로 보내주는 방식을 의미한다.
+
+![4](/images/post/cs/web-history-SSR-CSR-SSG/4.png)
+
+1. 최초요청시 서버에서 사용자에게 렌더링할 준비가 된 full HTML 파일을 보낸다.
+2. 필요한 자원(Javascript, CSS 등)을 다운로드 한다.
+3. 브라우저에서 리액트를 실행하고 이 과정에서 최초 요청시 서버에서 사용자로부터 응답한 HTML 파일의 요소들을 리액트가 흡수(hydration)하여 리액트의 Shadow DOM을 만들어낸다.
+4. 위 과정이 모두 끝나면 유저는 컨텐츠를 볼 수 있으며 상호작용 할 수 있다.
+
+## SSR이 해결한 CSR의 문제점
+
+1. 서버에서 빠르게 틀이 잡힌 HTML을 만들어 사용자에게 제공해주므로 사용자들에게 렌더링 되는 첫 페이지를 보는 시간이 단축된다.
+2. 모든 컨텐츠가 HTML에 담겨있으므로 효율적인 SEO가 가능하다.
+
+## SSR의 문제점
+
+1. Blinking issue가 있다.
+    
+    static sites에서 발생했던 문제로 사용자가 페이지 이동과 같은 요청을 하면 서버와 통신을 거쳐 전체적인 웹 사이트를 다시 그리기때문에 깜빡임이 발생한다.
+    
+2. 서버 과부하가 걸린다.
+    
+    사용자가 많은 제품일수록 사용자가 클릭할 때 마다 서버에서 데이터를 받아 HTML 파일을 생성해야하므로 서버에 많은 무리를 줄 수 있다.
+    
+3. 상호작용이 느리거나 안될 수 있다.
+    
+    사용자가 웹 사이트를 빠르게 볼 수 있도록 첫 페이지 렌더링에 필요한 Javascript 소스코드는 받아왔지만 그 외의 동적으로 데이터를 처리하는 Javascript 소스코드는 아직 다운로드 받지 못해 클릭같은 이벤트에 반응이 없는 상황이 생길 수 있다.
+    
+---
+
+# TTV와 TTI
+
+## TTV란?
+
+Time To View로 사용자가 페이지를 요청하고 해당 페이지가 보일 때 까지 걸리는 시간을 의미한다.
+
+## TTI란?
+
+Time To Interaction으로 사용자가 페이지를 요청하고 해당 페이지에서 동적인 활동(상호작용)을 시작 할 수 있을 때 까지 걸리는 시간을 의미한다.
+
+## CSR에서의 TTV와 TTI
+
+TTV와 TTI가 일치한다.
+
+CSR은 사용자에게 빈 HTML을 보내고 이후 필요한 자원을 한꺼번에 보내주므로 일치하는 것이다.
+
+CSR 방식으로 웹 어플리케이션을 개발 할 때에는 사용자에게 최종적으로 번들링 해서 보내주는 Javascript 파일들을 효율적으로 분할(code splitting)해서 첫 페이지 로딩시에 필요한 Javascript 파일들만 보내도록 구성하는 작업이 필요하다.
+
+## SSR에서의 TTV와 TTI
+
+TTV와 TTI의 시점이 다르다.
+
+SSR은 사용자에게 full HTML을 보내주므로 사용자는 화면이 먼저 보인다(TTV) 이후 상호작용에 필요한 소스코드를 보내주므로 사용자는 보다 늦게 상호작용(TTI) 할 수 있다.
+
+SSR 방식으로 웹 어플리케이션을 개발 할 때에는 TTV와 TTI 간에 존재하는 시간 공백을 어떻게 하면 효율적으로 줄일 수 있는지 고민해야한다.
+
+---
+
+# SSG
+
+Static Site Generation으로 SSR이나 CSR만을 고집한게 아닌 새로운 방식이다.
+
+예를 들어 React(CSR에 최적화됨)를 Gatsby(SSR에 최적화됨) 라이브러리와 함께 개발하면 정적으로 웹 페이지를 생성해 서버에 미리 배포해 둘 수 있다.
+
+하지만 모든 페이지가 정적인 것이 아닌 추가적으로 데이터를 서버로부터 받아오거나 동적으로 처리해야되는 부분이 있다면 페이지와 함께 Javascript 파일을 별도로 받아 올 수 있기 때문에 동적인 페이지의 처리도 가능하다.
+
+React + Gatsby 외에도 React + NextJS도 있다.

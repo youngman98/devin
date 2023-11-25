@@ -1,0 +1,90 @@
+---
+tag: Javascript
+title: 웹브라우저 동작원리(stack, queue)
+date: 2023-07-25
+description: 웹브라우저의 동작원리와 자바스크립트에서 웹이 동작하는 방식인 stack과 queue에 대해 알아보자
+thumbnail: /images/post/javascript/web-browser-operating/thumbnail.png
+---
+
+# 웹브라우저 동작원리(stack, queue)
+
+생성일: 2023년 7월 25일
+태그: CS
+카테고리: Javascript
+
+---
+
+# 웹 브라우저란?
+
+서버에서 받아온 HTML, CSS, JS를 실행시켜주는 프로그램이다.
+
+---
+
+# 웹 브라우저 동작원리
+
+브라우저는 C++이라는 언어로 코드가 짜여져있다.
+
+브라우저는 실행해야할 자바스크립트 코드를 발견하면 C++언어로 만들어둔 stack에 넣어 돌린다.
+
+(stack은 전부 집어넣고 맨 윗줄부터 하나씩 실행시키는 공간이다.)
+
+하지만 가끔 특별한 코드를 실행해야하는 경우가 있다.
+
+서버로의 ajax요청, 이벤트리스너, setTimeout같은 코드들 말이다.
+
+이런 코드는 처리하기까지 시간이 오래 걸린다.
+
+ajax요청은 서버에서 응답을 받기까지 시간이 오래걸리고
+
+버튼 이벤트 리스너는 사용자가 버튼을 누르기까지 시간이 오래걸린다.
+
+그래서 ajax요청, 이벤트리스너, setTimeout 같은 코드는 잠시 대기실같은 곳에 보류해뒀다가 실행준비가 되면 Queue라는 곳에 집어넣고 Queue에 있던 코드는 Stack으로 옮겨서 실행해준다.(Stack이 텅 비어있을때만)
+
+(queue는 들어온 순서대로 차례차례 stack으로 옮겨준다.)
+
+![0](/images/post/javascript/web-browser-operating/0.png)
+
+## 그럼 이걸 어떻게 응용할까?
+
+stack을 바쁘게 만들면 ajax요청, 이벤트리스너, setTimeout 같은 코드들의 실행이 불가능하다.
+
+만약 반복문을 1억번 돌려 10초가 걸린다고 하면 10초동안 ajax요청, 이벤트리스너, setTimeout 같은 코드가 실행 불가하다. stack이 10초동안 비지 않기 때문이다.
+
+그럼 브라우저가 멈추거나 하얗게 변하는 현상이 일어난다.
+
+근데 정말 어쩔 수 없이 반복문을 100억번 돌려야 한다면 어떻게 할까?
+
+### setTimeout 이용하기
+
+setTimeout()을 이용해 0초마다 0~1억 반복, 1~2억 반복, 2~3억 반복 … 처럼 실행하면 보다 쾌적하게 실행할 수 있다.
+
+0초마다 queue로 보내기 때문이다.
+
+setTimeout의 타미어를 0으로 설정해도 설정가능한 최소시간이 4ms이므로 4ms로 실행된다.
+
+### Web worker 이용하기
+
+다른 자바스크립트 파일을 이용해 그 파일 안에서 힘들고 오래걸리는 연산을 시키고 완료되면 그 값을 가져오라는 명령이다.
+
+이미 만들어진 Worker라는 클래스를 사용하면 된다.
+
+```jsx
+(메인 js 파일)
+var myWorker = new Worker('worker.js'); 
+
+w.onmessage = function(e){
+  console.log(e.data) //이러면 1 나옴
+};
+```
+
+```jsx
+(worker.js 파일)
+
+var i = 0;
+postMessage(i + 1); //postMessage라는 특별한 함수가 있다.
+```
+
+이렇게 세팅해두면
+worker.js에서 작업이 완료될 시 postMessage()를 실행하면 다른 파일로 완료된 결과값을 전달해줄 수 있다.
+
+이러면 stack이 안바빠진다.

@@ -1,0 +1,59 @@
+---
+tag: Gatsby
+title: Gatsby의 개념과 사용방법
+date: 2023-10-29
+description: 정적 사이트 생성 프레임워크인 Gatsby의 개념과 작동방식, 사용방법에 대한 게시글이다.
+thumbnail: /images/post/gatsby/gatsby-install-guide/thumbnail.png
+---
+
+# 정적 사이트 생성 프레임워크중 Gatsby를 사용하는 이유
+
+## Gatsby가 정적사이트 제작에 적합하다.
+
+JAM stack 기반 프레임워크는 대표적으로 4가지가 있다.
+
+Next.js, Gatsby, Nuxt, Jekll
+
+이중 가장 사용자가 많은건 Next.js이고 그 다음이 Gatsby인데 왜 Gatsby를 쓰는걸까?
+
+이는 두 프레임워크의 사용 용도가 다르기 때문이다.
+
+Next.js는 정적 사이트 생성 기능 + SSR을 위해 사용하는 프레임워크다. 그래서 서버와 통신하며 요청을 받을때마다 동적으로 웹 사이트를 생성한다.
+
+Gatsby는 서버 없이 정적 사이트 생성을 위해 사용하는 프레임워크다.
+
+그래서 정적사이트인 블로그, 포트폴리오, 기업 소개페이지 같은 경우 Gatsby를 사용하는게 더 적합하다.
+
+## SEO와 부분적인 CSR, SSR 사용을 통해 성능이 좋다.
+
+개발 후 빌드 과정에서 마크업이 생성되는데 이때 페이지 내 모든 컨텐츠가 생성되어 있으므로 SEO에서 우수하다.
+
+또한 단순 정적 페이지가 아닌 필요에 따라 CSR, SSR, lazy loading을 적절히 섞어 쓸 수 있어서 성능면에서 다른 정적 페이지 프레임워크보다 우수하다. 
+
+---
+
+# Gatsby 작동방식
+
+![0](/images/post/gatsby/gatsby-install-guide/0.png)
+
+## Data Sources
+
+이 단계에서는 블로그나 웹사이트를 만드는데 필요한 데이터를 데이터 소스에서 수집한다.
+
+여기서 데이터 소스는 DB, XML files, CSV, Text files, JSON, Wordpress, Markdown file, API 등이 있다.
+
+## Build
+
+Gatsby는 플러그인 시스템이 되어 있어 다양한 데이터 소스에서 데이터를 가져올 수 있는데
+
+Gatsby는 기본적으로 GraphQL을 사용해 데이터 소스에서 데이터를 가져온다.
+
+플러그인을 이용해 RESTful API에서 데이터를 가져올 수 있지만 GraphQL이 Gatsby에 포함되어 있으므로 훨씬 쉽게 원하는 데이터를 선택해 가져올 수 있다.
+
+## Deploy
+
+빌드시 정적 사이트로 만들어준다.
+
+데이터 소스에서 GraphQL로 가져온 데이터를 빌드할 때 모두 가져와 정적 파일의 데이터로 포함한다.
+
+이때 빌드된 파일들을 정적 웹 호스트 사이트에 호스팅 할 수 있다.

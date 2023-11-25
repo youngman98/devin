@@ -1,13 +1,38 @@
-import type { Config } from 'tailwindcss'
+/** @type {import('tailwindcss').Config} */
 
-const config: Config = {
+module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    extend: { },
+    extend: { 
+      typography: ({ theme: any }) => ({
+        DEFAULT: {
+          css: {
+            'blockquote p:first-of-type::before': false,
+            'blockquote p:last-of-type::after': false,
+            'code::before': false,
+            'code::after': false,
+            code: {
+              backgroundColor: '#f2f2f2',
+              padding: '0.2em 0.4em',
+              borderRadius: '5px',
+              fontWeight: 500,
+              fontSize: '90%',
+            },
+          },
+        },
+      }),
+      listStyleImage: {
+        checkmark: 'url("/images/icon/check.png")'
+      }
+    },
+    fontFamily: {
+      Pretendard: ["Pretendard-Regular"],
+      Orbit: ["Orbit-Regular"]
+    },
     colors: {
       'theme': '#f2f2f2',
       'contrast': '#1f2e3d',
@@ -37,10 +62,7 @@ const config: Config = {
       'green8': '#15803d',
     },
   },
-  variants: {
-    typography: ['dark'],
-  },
   plugins: [require('@tailwindcss/typography')],
 }
 
-export default config
+
