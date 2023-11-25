@@ -3,8 +3,9 @@ tag: Nextjs
 title: 동적라우팅
 date: 2023-11-21
 description: 동적라우팅과 Nextjs에서 동적라우팅 하는 방법, usePathname으로 경로를 활용하기
-thumbnail: /images/post/nextjs/dynamicRouting-useRoute-usePathname/thumbnail.png
+thumbnail: /images/post/nextjs/dynamicRouting/thumbnail.png
 ---
+
 # 동적 라우팅
 
 동적 라우팅을 사용하면 동적 데이터를 수용할 수 있는 페이지를 만들고 제공된 라우트에 따라 이를 렌더링 할 수 있다.
@@ -28,10 +29,12 @@ thumbnail: /images/post/nextjs/dynamicRouting-useRoute-usePathname/thumbnail.png
 
 ### 동적 라우팅
 
-- 디먼(dimen)이 라우팅 경로를 자동으로 갱신한다.
+- `디먼(dimen)`이 라우팅 경로를 자동으로 갱신한다.
 - 자동으로 갱신해주므로 라우팅 유지를 위한 작업 리소스가 적다.
 - 많은 네트워크와의 통신에 유리하다.
 - 정적 라우팅에 비해 상대적으로 더 많은 대역폭 소비가 발생한다.
+
+---
 
 # Nextjs에서 라우팅 방식
 
@@ -42,15 +45,15 @@ Nextjs에서는 파일 시스템 기반의 라우팅 시스템을 사용한다.
 라우트 관리를 간단하고 직관적이게 해준다.
 
 1. Index Routes
-    - `pages/index.js` → `/`
-    - `pages/blog/index.js` → `/blog`
+    - pages/index.js → /
+    - pages/blog/index.js → /blog
 2. Nested Routes
-    - `pages/blog/first-post.js` → `/blog/first-post`
-    - `pages/dashboard/settings/username.js` → `/dashboard/settings/username`
+    - pages/blog/first-post.js → /blog/first-post
+    - pages/dashboard/settings/username.js → /dashboard/settings/username
 3. Dynamic Routes
-    - `pages/blog/[slug].js` → `/blog/:slug (/blog/hello-world)`
-    - `pages/[username]/settings.js` → `/:username/settings (/foo/settings)`
-    - `pages/post/[...all].js` → `/post/* (/post/2020/id/title)`
+    - pages/blog/[slug].js → /blog/:slug (/blog/hello-world)
+    - pages/[username]/settings.js → /:username/settings (/foo/settings)
+    - pages/post/[...all].js → /post/* (/post/2020/id/title)
 
 ## Nextjs에서 동적 라우팅 하는 방법
 
@@ -60,10 +63,11 @@ Nextjs에서 대괄호 [ ] 로 시작하는 파일 이름을 생성하여 동적
 
 ### 1. 기본적인 동적 라우트 생성(useRoute)
 
-예를들어 post의 [id]에 따라 경로를 지정하려고 할때는 app/pages/[page].js 파일을 생성한다. 
+예를들어 post의 [id]에 따라 경로를 지정하려고 할때는 app/pages/[page].js 파일을 생성한다.
+
 (대괄호 안의 [id]는 변수로 작용하여 어떤 값이든 받을 수 있다.)
 
-```jsx
+```jsx showLineNumbers
 (app/post/[id].js)
 'use client'
 

@@ -12,6 +12,8 @@ Flex는 한 방향 레이아웃 시스템이다.
 
 ![0](/images/post/css/flex-layout/0.png)
 
+---
+
 # flex 사용법
 
 ```html
@@ -35,6 +37,8 @@ Flex는 한 방향 레이아웃 시스템이다.
 
 가로배치를 하고자 하는 박스들을 묶은 부모 태그에 display: flex 속성을 준다.
 
+---
+
 # flex에서 쓰는 속성
 
 ```css
@@ -48,7 +52,7 @@ Flex는 한 방향 레이아웃 시스템이다.
 }
 ```
 
-### display
+## display
 
 flex 컨테이너를 정의해주는 속성으로 주어진 값에 따라 inline 혹은 block이다.
 
@@ -60,7 +64,7 @@ flex 컨테이너를 정의해주는 속성으로 주어진 값에 따라 inline
 }
 ```
 
-### flex-direction
+## flex-direction
 
 배치방향을 설정한다. flex item들이 flex container의 방향대로 위치한다.
 
@@ -77,7 +81,7 @@ flexbox는 단방향의 레이아웃 개념이다.
 - column: 위에서부터 배치된다.
 - column-reverse: 아래에서부터 배치된다.
 
-### flex-wrap
+## flex-wrap
 
 영역내에서 요소가 벗어났을 때 표현할 방식을 정하는 속성이다.
 
@@ -91,7 +95,7 @@ flexbox는 단방향의 레이아웃 개념이다.
 - wrap: 화면을 벗어난 요소를 줄바꿈 해준다.
 - wrap-reverse: 화면을 벗어난 요소를 반대 순서로 줄바꿈 해준다.
 
-### justify-content
+## justify-content
 
 요소의 가로축 정렬을 정하는 속성이다.
 
@@ -107,7 +111,7 @@ flexbox는 단방향의 레이아웃 개념이다.
 - space-between: 요소들을 가로축 양끝에 붙이고 요소들간 동일한 여백을 두는 정렬
 - space-around: 가로축 양끝에 여백을 만들고 요소들을 여백에 붙인다. 요소들간 동일한 여백을 두는 정렬
 
-### align-items
+## align-items
 
 요소의 세로축 정렬을 정하는 속성이다.
 
@@ -122,7 +126,7 @@ flexbox는 단방향의 레이아웃 개념이다.
 - flex-end: 요소들을 세로축 끝부분에 정렬한다.
 - center: 요소들을 세로축 가운데에 정렬한다.
 
-### align-content
+## align-content
 
 flex-wrap이 wrap일때 적용되는 속성으로
 
@@ -140,7 +144,7 @@ flex-wrap이 wrap일때 적용되는 속성으로
 - space-between: 세로축 양쪽 끝부분에 정렬하고 가운데에 여백을 동일하게 둔다.
 - space-around: 세로축 양쪽 끝부분에 여백을 만들고 요소들을 여백에 붙인다.
 
-### flex-grow
+## flex-grow
 
 여백을 요소에게 배정시켜주는데 그 요소크기의 비율을 정해주는 속성이다.
 
@@ -157,7 +161,7 @@ flex-wrap이 wrap일때 적용되는 속성으로
 - 2: 여백을 해당요소가 전체를 요소갯수만큼 나누고 그중 2배만큼 가져온다.
 - 3: 여백을 해당요소가 전체를 요소갯수만큼 나누고 그중 3배만큼 가져온다.
 
-### flex-shrink
+## flex-shrink
 
 flex-grow와 쌍을 이루는 속성으로
 
@@ -174,7 +178,7 @@ flex-grow와 쌍을 이루는 속성으로
 고정크기는 width로 설정한다.
 - 그외 숫자값: 0보다 큰 값이 적용되면 요소가 flexible 박스로 변하고 flex-basis보다 작아진다.
 
-### flex-basis
+## flex-basis
 
 요소들의 기본 크기를 정해주는 속성이다.
 
