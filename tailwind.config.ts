@@ -16,6 +16,7 @@ module.exports = {
             'code::before': false,
             'code::after': false,
             code: {
+              color: '#16a34a',
               backgroundColor: '#f2f2f2',
               padding: '0.2em 0.4em',
               borderRadius: '5px',
@@ -51,7 +52,8 @@ module.exports = {
       'text2': '#414D5A',
       'text3': '#1B2937',
       'text4': '#121D27',
-
+      'text5': '#111827',
+      
       'green1': '#f0fdf4',
       'green2': '#dcfce7',
       'green3': '#bbf7d0',

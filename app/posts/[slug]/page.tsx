@@ -2,8 +2,11 @@
 import { format, parseISO } from 'date-fns'
 import { allPosts } from 'contentlayer/generated'
 import { getMDXComponent } from 'next-contentlayer/hooks'
+
 import Image from 'next/image';
 import Link from 'next/link';
+import TOC from 'app/components/toc/toc';
+import { TOCAside } from 'app/components/toc/tocStyle';
 
 export const generateStaticParams = async () => allPosts.map((post) => ({ slug: post._raw.flattenedPath }))
 
@@ -18,29 +21,29 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
   const Content = getMDXComponent(post.body.code)
 
   return (
-    <article className="prose prose-h1:text-4xl prose-p:leading-4 prose-li:leading-5 font-Pretendard py-10 px-10 mx-auto max-w-4xl">
-      <div className="mb-8 text-right">
-      <Link href={`/tag/${post.tag}`} className="">
-      <p className=" max-w-full bg-green6 rounded-md text-center cursor-pointer">{post.tag}</p>
-      </Link>
-        <h1 className="text-center">{post.title}</h1>
-        <h3 className="text-center">{post.description}</h3>
-        <time dateTime={post.date} className="text-gray-600 mt-6">
-          {format(parseISO(post.date), 'yyyy-MM-dd')}
-        </time>
-        
-      </div>
-      <div className="max-w-4xl">
-        {/* <Image
-          src={post.thumbnail}
-          alt="썸네일"
-          width={500}
-          height={100}
-          className="m-auto"
-        /> */}
-        <Content/>
-      </div>
-    </article>
+    <div>
+      <TOCAside>
+        <TOC/>
+      </TOCAside>
+      {/* post */}
+      <article className="prose prose-h1:text-4xl prose-h2:text-3xl prose-h3:text-2xl prose-p:leading-4 prose-li:leading-5 font-Pretendard py-10 px-10 mx-auto max-w-4xl">
+        {/* post 상단-제목, 설명, 태그, 작성일 */}
+        <div className="mb-8 text-right">
+        <Link href={`/tag/${post.tag}`} className="">
+        <p className=" max-w-full bg-green6 rounded-md text-center cursor-pointer">{post.tag}</p>
+        </Link>
+          <p className="text-center text-4xl font-bold text-text5">{post.title}</p>
+          <p className="text-center">{post.description}</p>
+          <time dateTime={post.date} className="text-gray-600 mt-6">
+            {format(parseISO(post.date), 'yyyy-MM-dd')}
+          </time>
+        </div>
+        {/* post 본문 */}
+        <div className="max-w-4xl">
+          <Content/>
+        </div>
+      </article>
+    </div>
   )
 }
 
