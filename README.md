@@ -204,3 +204,6 @@
 4. scrollTo함수로 상단이동 버튼 구현
 5. rehype-pretty-code로 code block 스타일링, 강조 단어 스타일링
    - 강조 단어는 content에 속하므로 tailwind.config.ts에서 content의 스타일링을 담당하는 typography에 별도로 code 스타일링을 한다.
+
+## 2023년 11월 27일
+1. toc 기능 구현
