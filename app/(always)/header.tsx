@@ -1,6 +1,6 @@
 
 import Link from 'next/link'
-import Search from './../(tool)/search'
+import Search from '../components/search'
 import Image from 'next/image';
 
 function Header() {

@@ -13,7 +13,7 @@ export default function TopMoveBtn() {
     <div className="h-12 w-12 fixed bg-green6 rounded-full bottom-0 right-14 ml-auto mb-5 mr-2 cursor-pointer"
      onClick={topMove}>
       <Image
-        src={'/images/icon/up-light.png'}
+        src={'/images/icon/up.png'}
         alt='topMove'
         width={100}
         height={100}
