@@ -207,3 +207,17 @@
 
 ## 2023년 11월 27일
 1. toc 기능 구현
+
+## 2023년 11월 30일
+1. redux-toolkit 삭제
+   - nextjs13의 app router 방식으로는 redux-toolkit과 next-redux-wrap을 사용할 수 없다.
+   https://github.com/kirill-konshin/next-redux-wrapper/issues/494
+   next-redux-wrapper 공식문서 issue 참조
+   - 그래서 내 기술블로그에서는 state의 사용량이 적도록 설계했으므로 상태관리 라이브러리를 별도로 사용하지 않기로 했다.
+   - 너무 긴 시간을 redux-toolkit 설정에 매달려서 낭비했다. 앞으로는 issue도 살펴봐야겠다.
+
+## 2023 12월 01일
+1. darkmode 기능만 구현
+   - next-themes를 사용해 다크모드 구현에 성공했다.
+   - 이제 tailwind의 dark:를 활용해 모든 요소에 색상값을 입력해야한다.
+   - 아르바이트라 다음주에나 작성할 수 있을 것 같다.
