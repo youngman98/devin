@@ -8,7 +8,6 @@ import { usePathname } from 'next/navigation';
 
 export default function PostCard() {
   const currentTag = usePathname().split('/')[2]; // 현재 경로에서 추출한 태그
-  console.log(currentTag)
   const filteredPosts = currentTag ? allPosts.filter(post => post.tag === currentTag) : allPosts;
 
   const sortedPosts = filteredPosts.sort((a, b) =>

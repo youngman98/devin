@@ -6,8 +6,10 @@ import { usePathname } from 'next/navigation'
 
 export default function Sidebar() {
 
+  // 현재 경로를 path에 담는다.
   const path = usePathname();
-  console.log(path);
+
+  // allPosts의 post 갯수만큼 반복하는 map을 사용해 post.tag를 모두 찾아내고 Set으로 중복 제거를 한 뒤 sort로 오름차순 정렬한다.
   const uniqueTags = [...new Set(allPosts.map((post) => post.tag))].sort();
 
   return (

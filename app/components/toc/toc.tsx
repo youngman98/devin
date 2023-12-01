@@ -15,7 +15,7 @@ const TOC = () => {
   }, [])
 
   useObservation(setCurrentId, headingEls)
-  console.log(headingEls)
+  
   return (
     <>
       <div className="text-2xl">목차</div>
