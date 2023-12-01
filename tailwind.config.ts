@@ -6,6 +6,7 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  darkMode: 'class',
   theme: {
     extend: { 
       typography: ({ theme: any }) => ({
@@ -35,7 +36,7 @@ module.exports = {
       Orbit: ["Orbit-Regular"]
     },
     colors: {
-      'theme': '#f2f2f2',
+      'theme': '#ffffff',
       'contrast': '#1f2e3d',
     
       'background1': '#8F979E',

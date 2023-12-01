@@ -1,13 +1,10 @@
-
 import type { Metadata } from 'next'
-import { useAppSelector, useAppDispatch } from 'redux/reduxHook'
 import './globals.css'
-import Darkmode from './components/darkmode'
+import Darkmode from './components/darkmode/darkmode'
 import TopMoveBtn from './components/topMoveBtn'
-import PostEdit from './components/edit'
 import Header from './(always)/header'
-import Sidebar from './(always)/sidebar'
-import Providers from '../redux/provider'
+import { ThemeProvider } from 'next-themes'
+import { Providers } from 'lib/providers'
 
 export default function RootLayout({
   children,
@@ -15,19 +12,23 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html>
-      <body>
-        <div className="Content-container justify-center font-Pretendard">
+    <html suppressHydrationWarning>
+      <Providers>
+      <body className="bg-theme dark:bg-contrast">
+        <div className="flex w-full min-h-screen justify-center font-Pretendard">
           <div className="Main-container">
-          <Header/>
-          
-          <Providers>{children}</Providers>
-          
+          <header>
+            <Header/>
+          </header>
+          <main>
+            {children}
+          </main>
           </div>
         </div>
         <TopMoveBtn/>
         <Darkmode/>
       </body>
+      </Providers>
     </html>
   )
 }
