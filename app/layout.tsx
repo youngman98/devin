@@ -3,7 +3,6 @@ import './globals.css'
 import Darkmode from './components/darkmode/darkmode'
 import TopMoveBtn from './components/topMoveBtn'
 import Header from './(always)/header'
-import { ThemeProvider } from 'next-themes'
 import { Providers } from 'lib/providers'
 
 export default function RootLayout({
@@ -14,7 +13,7 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning>
       <Providers>
-      <body className="bg-theme dark:bg-contrast">
+      <body className="bg-theme dark:bg-background7">
         <div className="flex w-full min-h-screen justify-center font-Pretendard">
           <div className="Main-container">
           <header>
