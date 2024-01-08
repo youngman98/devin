@@ -43,7 +43,10 @@ module.exports = {
       'background2': '#BCC0C5',
       'background3': '#E4E6E8',
       'background4': '#f9f9f9',
-    
+      'background5': '#1f1f1f',
+      'background6': '#010101',
+      'background7': '#121212',
+
       'border1': '#eaeaed',
       'border2': '#dee2e6',
       'border3': '#b5b5b5',
@@ -54,7 +57,8 @@ module.exports = {
       'text3': '#1B2937',
       'text4': '#121D27',
       'text5': '#111827',
-      
+      'text6': '#f2f2f2',
+
       'green1': '#f0fdf4',
       'green2': '#dcfce7',
       'green3': '#bbf7d0',

@@ -45,7 +45,6 @@ li {list-style: none;} */
   --font-medium: 1rem;
   --font-small: .7rem;
   --text-normal: rgba(0, 0, 0, .7);
-  --text-sub: 
   --text-alert: rgba(134, 142, 150, 1);
   --box-hover: #DBE4FF;
 }

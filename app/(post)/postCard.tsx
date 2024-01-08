@@ -19,16 +19,16 @@ export default function PostCard() {
       {sortedPosts.map((post, idx) => (
         <div key={idx} className="h-72 w-1/4 p-2.5 box-border">
           <Link href={post.url}>
-            <div className="h-full w-full shadow-md truncate hover:scale-105 hover:bg-background4">
+            <div className="h-full w-full shadow-md truncate hover:scale-105 hover:bg-background3 dark:hover:bg-background5 dark:bg-background5">
               <div className="relative w-full h-1/2 overflow-hidden">
                 <Image src={post.thumbnail} alt="post-thumbnail" fill />
               </div>
-              <div className="flex flex-col p-3">
+              <div className="flex flex-col p-3 dark:opacity-90">
                 <span className="text-green6">{`[${post.tag}]`}</span>
                 <div className="truncate">{post.title}</div>
                 <div className="truncate pt-1 text-xs">{post.description}</div>
               </div>
-              <div className="text-right pl-4 pr-4 b-0">
+              <div className="text-right pl-4 pr-4 b-0 dark:opacity-90">
                 {format(parseISO(post.date), 'yyyy-MM-dd')}
               </div>
             </div>

@@ -26,13 +26,13 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
         <TOC/>
       </TOCAside>
       {/* post */}
-      <article className="prose prose-h1:text-4xl prose-h2:text-3xl prose-h3:text-2xl prose-p:leading-4 prose-li:leading-5 font-Pretendard py-10 px-10 mx-auto max-w-4xl">
+      <article className="prose prose-h1:text-4xl prose-h2:text-3xl prose-h3:text-2xl prose-p:leading-4 prose-li:leading-5 font-Pretendard py-10 px-10 mx-auto max-w-4xl dark:text-text6 dark:opacity-90 dark:prose-h1:text-text6 dark:prose-h2:text-text6 dark:prose-h3:text-text6">
         {/* post 상단-제목, 설명, 태그, 작성일 */}
         <div className="mb-8 text-right">
-        <Link href={`/tag/${post.tag}`} className="">
-        <p className=" max-w-full bg-green6 rounded-md text-center cursor-pointer">{post.tag}</p>
-        </Link>
-          <p className="text-center text-4xl font-bold text-text5">{post.title}</p>
+          <Link href={`/tag/${post.tag}`} className="no-underline">
+            <p className=" max-w-full bg-green6 dark:bg-green8 rounded-md text-center cursor-pointer">{post.tag}</p>
+          </Link>
+          <p className="text-center text-4xl font-bold text-text5 dark:text-text6 dark:opacity-90">{post.title}</p>
           <p className="text-center">{post.description}</p>
           <time dateTime={post.date} className="text-gray-600 mt-6">
             {format(parseISO(post.date), 'yyyy-MM-dd')}
