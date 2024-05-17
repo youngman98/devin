@@ -230,3 +230,8 @@
    - 순수 하얀색(#ffffff)가 아닌 조금의 어두움이 섞인 하얀색(#f2f2f2)를 사용해 다크모드에서 하얀색으로 인한 부담감을 줄이고 opacity를 낮춰 추가적인 부담감을 줄였다.
    - next-themes로 인한 theme의 default가 undefined라서 hydration중 오류가 발생하는 부분을 해결하려 했으나 실제 작동에는 영향이 없어 순서를 미뤄두겠다.
 
+
+## 2024년 5월 17일
+1. clipboardAPI와 관련하여 블로그 글 작성
+2. vercel 배포를 위해 에러가 발생한 toast-ui 라이브러리 삭제
+3. next-themes로 인한 theme의 default가 undefined라서 발생하는 오류의 원인을 이미지의 파일명을 ${theme}로 함으로써 undefined가 들어갈 경우 생기는 오류라고 생각함. 배포후 심각한 문제로 생각된다면 고칠 예정

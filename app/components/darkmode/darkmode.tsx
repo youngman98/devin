@@ -5,18 +5,9 @@ import { useState, useEffect } from 'react'
 import { useTheme } from 'next-themes';
 
 export default function Darkmode() {
-  const [mounted, setMounted] = useState(false)
   const { theme, setTheme } = useTheme()
-
-  // undefined 문제 해결
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  if (!mounted) {
-    return null
-  }
-
+  console.log(theme)
+  //useEffect(() => setTheme('light'), []);
   return(
     <>
     <div
