@@ -11,11 +11,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html suppressHydrationWarning>
+    <html lang="ko" suppressHydrationWarning>
       <Providers>
       <body className="bg-theme dark:bg-background7">
         <div className="flex w-full min-h-screen justify-center font-Pretendard">
-          <div className="Main-container">
+          <div className="Main-container mr-8">
           <header>
             <Header/>
           </header>

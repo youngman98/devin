@@ -17,7 +17,7 @@ export default function PostCard() {
   return (
     <>
       {sortedPosts.map((post, idx) => (
-        <div key={idx} className="h-72 w-1/4 p-2.5 box-border">
+        <div key={idx} className="h-72 xl:w-1/4 md:w-1/3 sm:w-1/2 max-[640px]:w-full p-2.5 box-border dark:text-text6 ">
           <Link href={post.url}>
             <div className="h-full w-full shadow-md truncate hover:scale-105 hover:bg-background3 dark:hover:bg-background5 dark:bg-background5">
               <div className="relative w-full h-1/2 overflow-hidden">

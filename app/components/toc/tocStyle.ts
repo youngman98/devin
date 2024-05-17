@@ -13,7 +13,6 @@ export const TOCAside = style.aside`
   & a {
     margin-top: 8px;
     text-decoration: none;
-    color: var(--main-color);
     font-weight: 400;
     font-size: 14px;
     opacity: 0.5;
@@ -25,7 +24,6 @@ export const TOCAside = style.aside`
     }
 
     &[data-active='true'] {
-      color: var(--main-color);
       opacity: 0.8;
       font-size: 16px;
       font-weight: 400;

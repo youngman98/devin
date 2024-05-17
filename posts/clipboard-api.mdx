@@ -1,0 +1,35 @@
+---
+tag: Javascript
+title: clipboard API
+date: 2024-01-09
+description: JS 클립보드 API의 사용이유와 방법에 대해 알아보자.
+thumbnail: /images/post/javascript/clipboard-api/thumbnail.png
+---
+
+# clipboard API란?
+
+클립보드와 관련해 잘라내기, 복사 및 붙여넣기에 응답하거나 시스템 클립보드에서 비동기적으로 읽고 쓸 수 있는 기능을 제공한다.
+
+기존엔 `document.execCommand()`를 사용하였으나 이제는 `deprecated`되어 더이상 사용되지 않고 clipboard API를 사용한다.
+
+## clipboard API의 웹 호환성
+
+![clipboardAPI 웹호환성](/images/post/javascript/clipboard-api/0.png)
+
+## clipboard API 사용방법
+
+navigator.clipboard.사용하고싶은 관련 함수
+
+```jsx
+navigator.clipboard.writeText('abc123@naver.com').then(
+  () => {
+    alert('제 이메일 주소를 복사하셨어요')
+  }
+)
+```
+
+
+
+## clipboard API 주의사항
+
+clipboard API는 https 환경이나 [localhost](http://localhost) 환경이 아니라면 작동하지 않는다.
